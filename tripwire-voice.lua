@@ -1,4 +1,4 @@
-print("[tripwire-voice] Script loading... Made by lil2kki <3")
+print("[tripwire-voice] Script now loading... Made by lil2kki <3")
 
 local SoundService = game:GetService("SoundService")
 
