@@ -1,5 +1,5 @@
 # my-outcome-memories
-scripts and other stuff for outcome memories. <br>
+safe qol scripts for outcome memories. <br>
 run them with any *executor* like **xeno** you know.
 
 ## Restore Tripwire (TailsDoll) Voice Lines
