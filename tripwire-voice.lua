@@ -71,8 +71,8 @@ local function playRandom(assets, label)
     local sound = Instance.new("Sound")
     sound.Volume = 1
     sound.SoundId = assets[idx]
-    sound.RollOffMaxDistance = 500
-    sound.RollOffMinDistance = 10
+    sound.RollOffMaxDistance = 255
+    sound.RollOffMinDistance = 50
     sound.SoundGroup = sfxGroup
     sound.Parent = parent
     sound:Play()
