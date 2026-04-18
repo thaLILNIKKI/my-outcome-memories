@@ -13,6 +13,10 @@ local MUSIC_ID = loadCustomAsset(
 )
 
 local RS = game:GetService("ReplicatedStorage")
+local GameProperties = workspace:WaitForChild("GameProperties")
+local stateValue = GameProperties:WaitForChild("State")
+
+local creamSound = nil
 
 local function applyReplacement()
     local ok, result = pcall(function()
@@ -24,7 +28,7 @@ local function applyReplacement()
             :WaitForChild("Round", 10)
             :WaitForChild("SoloTheme", 10)
 
-        local creamSound = soloTheme:WaitForChild("CreamSolo", 10)
+        creamSound = soloTheme:WaitForChild("CreamSolo", 10)
         if creamSound and creamSound:IsA("Sound") then
             creamSound.SoundId = MUSIC_ID
             creamSound:GetPropertyChangedSignal("SoundId"):Connect(function()
@@ -41,5 +45,13 @@ local function applyReplacement()
 end
 
 applyReplacement()
+
+stateValue.Changed:Connect(function(newState)
+    print("[tea-time-waltz] State: " .. tostring(newState))
+    if newState == "RE" and creamSound and creamSound.IsPlaying then
+        creamSound.TimePosition = 184.5 -- 3:04:500
+        print("[tea-time-waltz] Seeked to 3:04.5 (end)")
+    end
+end)
 
 print("[tea-time-waltz] Script loaded! Made by lil2kki <3")
