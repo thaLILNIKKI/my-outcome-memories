@@ -36,6 +36,12 @@ local function applyReplacement()
                     creamSound.SoundId = MUSIC_ID
                 end
             end)
+            creamSound.Looped = false
+            creamSound:GetPropertyChangedSignal("Looped"):Connect(function()
+                if creamSound.Looped then
+                    creamSound.Looped = false
+                end
+            end)
             print("[tea-time-waltz] Replaced successfully")
         end
     end)
