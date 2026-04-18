@@ -1,5 +1,6 @@
 # my-outcome-memories
-scripts and other stuff for outcome memories
+scripts and other stuff for outcome memories. <br>
+run them with any *executor* like **xeno** you know.
 
 ## Restore Tripwire (TailsDoll) Voice Lines
 #### Bring back sounds that was removed due to Roblox moderation.
