@@ -72,7 +72,7 @@ local function playRandom(assets, label)
     sound.Volume = 1
     sound.SoundId = assets[idx]
     sound.RollOffMaxDistance = 255
-    sound.RollOffMinDistance = 50
+    sound.RollOffMinDistance = 10
     sound.SoundGroup = sfxGroup
     sound.Parent = parent
     sound:Play()
