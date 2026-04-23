@@ -1,5 +1,3 @@
--- press V to toggle first/third person
-
 print("[first-person] Now loading... Made by lil2kki <3")
 
 local Players = game:GetService("Players")
@@ -9,14 +7,22 @@ local Camera = workspace.CurrentCamera
 
 local plr = Players.LocalPlayer
 local char = plr.Character or plr.CharacterAdded:Wait()
-local head = char:WaitForChild("Head")
-local hum = char:WaitForChild("Humanoid")
+local head = char and char:WaitForChild("Head")
+local hum = char and char:WaitForChild("Humanoid")
 
 local active = false
 local yaw = 0
 local pitch = 0
 
+-- if character loads later, wait properly
+if not char then
+    char = plr.CharacterAdded:Wait()
+    head = char:WaitForChild("Head")
+    hum = char:WaitForChild("Humanoid")
+end
+
 local function setVisibility(visible)
+    if not char then return end
     for _, part in pairs(char:GetDescendants()) do
         if part:IsA("BasePart") then
             part.LocalTransparencyModifier = visible and 0 or 1
@@ -33,6 +39,7 @@ local function toggle()
     active = not active
     
     if active then
+        if not head then return end
         local _, y, p = Camera.CFrame:ToOrientation()
         yaw = y
         pitch = math.clamp(p, -math.rad(89), math.rad(89))
@@ -40,14 +47,18 @@ local function toggle()
         Camera.CameraType = Enum.CameraType.Scriptable
         Camera.CameraSubject = nil
         setVisibility(false)
-        plr.CameraMinZoomDistance = 0
-        plr.CameraMaxZoomDistance = 0
+        pcall(function()
+            plr.CameraMinZoomDistance = 0
+            plr.CameraMaxZoomDistance = 0
+        end)
     else
         Camera.CameraType = Enum.CameraType.Custom
         Camera.CameraSubject = hum
         setVisibility(true)
-        plr.CameraMinZoomDistance = 0.5
-        plr.CameraMaxZoomDistance = 20
+        pcall(function()
+            plr.CameraMinZoomDistance = 0.5
+            plr.CameraMaxZoomDistance = 20
+        end)
     end
 end
 
@@ -73,8 +84,8 @@ Input.InputBegan:Connect(function(inp, processed)
     if inp.KeyCode == Enum.KeyCode.V then toggle() end
 end)
 
-plr.CharacterAdded:Connect(function(new)
-    char = new
+plr.CharacterAdded:Connect(function(newChar)
+    char = newChar
     head = char:WaitForChild("Head")
     hum = char:WaitForChild("Humanoid")
     if active then
@@ -86,4 +97,4 @@ plr.CharacterAdded:Connect(function(new)
     end
 end)
 
-print("[first-person] loaded. V to toggle.")
+print("[first-person] Loaded! Press V to toggle.")
