@@ -64,8 +64,8 @@ Input.InputChanged:Connect(function(inp, processed)
     if processed or not active then return end
     if inp.UserInputType == Enum.UserInputType.MouseMovement then
         local d = inp.Delta
-        yaw = yaw - d.X * 0.002
-        pitch = math.clamp(pitch - d.Y * 0.002, -math.rad(89), math.rad(89))
+        yaw = yaw - d.X * 0.0025
+        pitch = math.clamp(pitch - d.Y * 0.0025, -math.rad(89), math.rad(89))
     end
 end)
 
