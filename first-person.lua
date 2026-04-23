@@ -6,20 +6,18 @@ local Run = game:GetService("RunService")
 local Camera = workspace.CurrentCamera
 
 local plr = Players.LocalPlayer
+if not plr then
+    Players:GetPropertyChangedSignal("LocalPlayer"):Wait()
+    plr = Players.LocalPlayer
+end
+
 local char = plr.Character or plr.CharacterAdded:Wait()
-local head = char and char:WaitForChild("Head")
-local hum = char and char:WaitForChild("Humanoid")
+local head = char:WaitForChild("Head")
+local hum = char:WaitForChild("Humanoid")
 
 local active = false
 local yaw = 0
 local pitch = 0
-
--- if character loads later, wait properly
-if not char then
-    char = plr.CharacterAdded:Wait()
-    head = char:WaitForChild("Head")
-    hum = char:WaitForChild("Humanoid")
-end
 
 local function setVisibility(visible)
     if not char then return end
