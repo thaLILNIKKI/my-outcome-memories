@@ -5,24 +5,22 @@ run them with any *executor* like **xeno** you know.
 > all the stuff made using AI (im lazy bum)
 
 ## First Person Camera Mode
-<img width="480" height="270" alt="23418" src="https://github.com/user-attachments/assets/329a5efb-e796-424f-afe4-be6767fec9b1" />
-
 ```lua
 -- Hit V to toggle. EXPEREMENTAL SHIT REALLY
 loadstring(game:HttpGet(
     "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/first-person.lua"
 ))()
 ```
+<img width="1280" height="720" src="https://github.com/user-attachments/assets/5f020756-df7d-499c-bb26-1dd109c4fc38" />
 
 ## Restore Tripwire (TailsDoll) Voice Lines
-#### Bring back sounds that was removed due to Roblox moderation.
-<img width="252" height="222" alt="Screenshot_3" src="https://github.com/user-attachments/assets/acb973d3-0303-4858-b4af-0acd6ef11d1e" />sing for me, little soul.
-
 ```lua
+-- Bring back sounds that was removed due to Roblox moderation.
 loadstring(game:HttpGet(
     "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/tripwire-voice.lua"
 ))()
 ```
+<img width="1280" height="720" src="https://github.com/user-attachments/assets/3d1440b0-a34e-480d-b504-84db59619906" />
 
 ## LMS Sound Replaces:
 ```lua
