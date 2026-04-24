@@ -19,17 +19,37 @@ local active = false
 local yaw = 0
 local pitch = 0
 
+local saved = {}
+
+local function hideObj(obj)
+    if saved[obj] then return end
+    if obj:IsA("BasePart") then
+        saved[obj] = obj.LocalTransparencyModifier
+        obj.LocalTransparencyModifier = 1
+    elseif obj:IsA("Decal") or obj:IsA("Texture") then
+        saved[obj] = obj.Transparency
+        obj.Transparency = 1
+    end
+end
+
+local descConn
+
 local function setVisibility(visible)
     if not char then return end
-    for _, part in pairs(char:GetDescendants()) do
-        if part:IsA("BasePart") then
-            part.LocalTransparencyModifier = visible and 0 or 1
+    if not visible then
+        saved = {}
+        for _, obj in pairs(char:GetDescendants()) do hideObj(obj) end
+        if descConn then descConn:Disconnect() end
+        descConn = char.DescendantAdded:Connect(function(obj) hideObj(obj) end)
+    else
+        if descConn then descConn:Disconnect(); descConn = nil end
+        for obj, val in pairs(saved) do
+            if obj and obj.Parent then
+                if obj:IsA("BasePart") then obj.LocalTransparencyModifier = val
+                elseif obj:IsA("Decal") or obj:IsA("Texture") then obj.Transparency = val end
+            end
         end
-    end
-    for _, acc in pairs(char:GetChildren()) do
-        if acc:IsA("Accessory") and acc.Handle then
-            acc.Handle.LocalTransparencyModifier = visible and 0 or 1
-        end
+        saved = {}
     end
 end
 
