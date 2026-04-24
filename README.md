@@ -5,6 +5,8 @@ run them with any *executor* like **xeno** you know.
 > all the stuff made using AI (im lazy bum)
 
 ## First Person Camera Mode
+<img width="480" height="270" alt="23418" src="https://github.com/user-attachments/assets/329a5efb-e796-424f-afe4-be6767fec9b1" />
+
 ```lua
 -- Hit V to toggle. EXPEREMENTAL SHIT REALLY
 loadstring(game:HttpGet(
