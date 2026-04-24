@@ -11,13 +11,27 @@ if not plr then
     plr = Players.LocalPlayer
 end
 
-local char = plr.Character or plr.CharacterAdded:Wait()
-local head = char:WaitForChild("Head")
-local hum = char:WaitForChild("Humanoid")
+local char = nil
+local head = nil
+local hum = nil
 
 local active = false
 local yaw = 0
 local pitch = 0
+
+local function updateReferences(newChar)
+    char = newChar
+    if char then
+        head = char:FindFirstChild("Head")
+        hum = char:FindFirstChild("Humanoid")
+        if not head then
+            head = char:WaitForChild("Head")
+        end
+        if not hum then
+            hum = char:WaitForChild("Humanoid")
+        end
+    end
+end
 
 local function setVisibility(visible)
     if not char then return end
@@ -37,7 +51,17 @@ local function toggle()
     active = not active
     
     if active then
-        if not head then return end
+        if not head or not head.Parent then
+            if plr.Character then
+                updateReferences(plr.Character)
+            end
+            if not head or not head.Parent then
+                print("[first-person] No character found, can't enable FPS")
+                active = false
+                return
+            end
+        end
+        
         local _, y, p = Camera.CFrame:ToOrientation()
         yaw = y
         pitch = math.clamp(p, -math.rad(89), math.rad(89))
@@ -49,6 +73,7 @@ local function toggle()
             plr.CameraMinZoomDistance = 0
             plr.CameraMaxZoomDistance = 0
         end)
+        print("[first-person] FPS mode ON")
     else
         Camera.CameraType = Enum.CameraType.Custom
         Camera.CameraSubject = hum
@@ -57,6 +82,7 @@ local function toggle()
             plr.CameraMinZoomDistance = 0.5
             plr.CameraMaxZoomDistance = 20
         end)
+        print("[first-person] FPS mode OFF")
     end
 end
 
@@ -71,7 +97,18 @@ end)
 
 Run.RenderStepped:Connect(function()
     if not active then return end
-    if not head or not head.Parent then return end
+    
+    if not head or not head.Parent then
+        if plr.Character then
+            updateReferences(plr.Character)
+        end
+        if not head or not head.Parent then
+            active = false
+            Camera.CameraType = Enum.CameraType.Custom
+            print("[first-person] Lost character, disabling FPS")
+            return
+        end
+    end
     
     local eye = head.Position + Vector3.new(0, 0.1, 0)
     Camera.CFrame = CFrame.new(eye) * CFrame.fromOrientation(pitch, yaw, 0)
@@ -83,10 +120,10 @@ Input.InputBegan:Connect(function(inp, processed)
 end)
 
 plr.CharacterAdded:Connect(function(newChar)
-    char = newChar
-    head = char:WaitForChild("Head")
-    hum = char:WaitForChild("Humanoid")
+    print("[first-person] Character spawned, updating references")
+    updateReferences(newChar)
     if active then
+        task.wait(0.1)
         setVisibility(false)
         Camera.CameraType = Enum.CameraType.Scriptable
         local _, y, p = Camera.CFrame:ToOrientation()
@@ -94,5 +131,7 @@ plr.CharacterAdded:Connect(function(newChar)
         pitch = math.clamp(p, -math.rad(89), math.rad(89))
     end
 end)
+
+updateReferences(plr.Character or plr.CharacterAdded:Wait())
 
 print("[first-person] Loaded! Press V to toggle.")
