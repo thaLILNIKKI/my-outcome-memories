@@ -22,6 +22,16 @@ loadstring(game:HttpGet(
 ```
 <img width="1280" height="720" src="https://github.com/user-attachments/assets/3d1440b0-a34e-480d-b504-84db59619906" />
 
+## Amy Rose Stun Voice Lines Fanmade
+```lua
+-- Amy Rose Stun Voice Lines Fanmade.
+-- Sounds from: https://www.tiktok.com/@mewmasterss/video/7634645656992320799
+loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/amy-voice.lua"
+))()
+```
+<img width="1280" height="720" src="https://github.com/user-attachments/assets/d3006a86-99ae-40e7-8d7a-baaec95b0bd8" />
+
 ## LMS Sound Replaces:
 ```lua
 -- hxperxhxper, juno - TEA-TIME WALTZ (Cream's old LMS) 
