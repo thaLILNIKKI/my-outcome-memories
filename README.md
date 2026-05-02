@@ -4,14 +4,19 @@ run them with any *executor* like **xeno** you know.
 
 > all the stuff made using AI (im lazy bum)
 
-## First Person Camera Mode
+## LMS Sound Replaces:
 ```lua
--- Hit V to toggle. EXPEREMENTAL SHIT REALLY
-loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/first-person.lua"
+-- hxperxhxper, juno - TEA-TIME WALTZ (Cream's old LMS) 
+loadstring(game:HttpGet(     -- FOR CREAM
+    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/tea-time-waltz.lua"
 ))()
 ```
-<img width="1280" height="720" src="https://github.com/user-attachments/assets/5f020756-df7d-499c-bb26-1dd109c4fc38" />
+```lua
+-- Vasalto - The Sol Still Burns V3 (April Fools)
+loadstring(game:HttpGet(     -- FOR BLAZE
+    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/sol-still-burns-v3.lua"
+))()
+```
 
 ## Restore Tripwire (TailsDoll) Voice Lines
 ```lua
@@ -32,16 +37,11 @@ loadstring(game:HttpGet(
 ```
 <img width="1280" height="720" src="https://github.com/user-attachments/assets/d3006a86-99ae-40e7-8d7a-baaec95b0bd8" />
 
-## LMS Sound Replaces:
+## First Person Camera Mode
 ```lua
--- hxperxhxper, juno - TEA-TIME WALTZ (Cream's old LMS) 
-loadstring(game:HttpGet(     -- FOR CREAM
-    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/tea-time-waltz.lua"
+-- Hit V to toggle. EXPEREMENTAL SHIT REALLY
+loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/first-person.lua"
 ))()
 ```
-```lua
--- Vasalto - The Sol Still Burns V3 (April Fools)
-loadstring(game:HttpGet(     -- FOR BLAZE
-    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/sol-still-burns-v3.lua"
-))()
-```
+<img width="1280" height="720" src="https://github.com/user-attachments/assets/5f020756-df7d-499c-bb26-1dd109c4fc38" />
