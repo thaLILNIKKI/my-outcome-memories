@@ -31,15 +31,12 @@ local function applyReplacement()
         creamSound = soloTheme:WaitForChild("CreamSolo", 10)
         if creamSound and creamSound:IsA("Sound") then
             creamSound.SoundId = MUSIC_ID
+            creamSound.Looped = true
             creamSound:GetPropertyChangedSignal("SoundId"):Connect(function()
                 if creamSound.SoundId ~= MUSIC_ID then
                     creamSound.SoundId = MUSIC_ID
                 end
             end)
-            if stateValue.Value == "RE" and creamSound.IsPlaying then
-                creamSound:Stop()
-                print("[tea-time-waltz] Already RE on load, stopped")
-            end
             print("[tea-time-waltz] Replaced successfully")
         end
     end)
