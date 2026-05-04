@@ -49,7 +49,7 @@ applyReplacement()
 
 stateValue.Changed:Connect(function(newState)
     -- print("[sol-still-burns-v3] State: " .. tostring(newState)) "RE", "ING"
-    if (newState == "RE" or newState == "ING") and blazeSound and blazeSound.IsPlaying then
+    if newState == "RE" and blazeSound and blazeSound.IsPlaying then
         blazeSound.Looped = false
         blazeSound.TimePosition = 207 -- 3:27
         -- print("[sol-still-burns-v3] Seeked to 3:27 (end)")
