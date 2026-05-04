@@ -31,6 +31,7 @@ local function applyReplacement()
         blazeSound = soloTheme:WaitForChild("BlazeSolo", 10)
         if blazeSound and blazeSound:IsA("Sound") then
             blazeSound.SoundId = MUSIC_ID
+            blazeSound.Looped = true
             blazeSound:GetPropertyChangedSignal("SoundId"):Connect(function()
                 if blazeSound.SoundId ~= MUSIC_ID then
                     blazeSound.SoundId = MUSIC_ID
@@ -46,12 +47,12 @@ end
 
 applyReplacement()
 
--- следим за State
 stateValue.Changed:Connect(function(newState)
-    print("[sol-still-burns-v3] State: " .. tostring(newState))
-    if newState == "RE" and blazeSound and blazeSound.IsPlaying then
+    -- print("[sol-still-burns-v3] State: " .. tostring(newState)) "RE", "ING"
+    if (newState == "RE" or newState == "ING") and blazeSound and blazeSound.IsPlaying then
+        blazeSound.Looped = false
         blazeSound.TimePosition = 207 -- 3:27
-        print("[sol-still-burns-v3] Seeked to 3:27 (end)")
+        -- print("[sol-still-burns-v3] Seeked to 3:27 (end)")
     end
 end)
 
