@@ -48,11 +48,11 @@ end
 applyReplacement()
 
 stateValue.Changed:Connect(function(newState)
-    print("[tea-time-waltz] State: " .. tostring(newState))
+    -- print("[tea-time-waltz] State: " .. tostring(newState))
     if newState == "RE" and creamSound and creamSound.IsPlaying then
         creamSound.Looped = false
         creamSound.TimePosition = 184.5 -- 3:04:500
-        print("[tea-time-waltz] Seeked to 3:04.5 (end)")
+        -- print("[tea-time-waltz] Seeked to 3:04.5 (end)")
     end
 end)
 
