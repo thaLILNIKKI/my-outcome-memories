@@ -2,7 +2,7 @@ print("[tripwire-voice] Now loading... Made by lil2kki <3")
 
 local SoundService = game:GetService("SoundService")
 
-pcall(delfolder, "tripwire-voice/") -- old cache dir
+delfolder("tripwire-voice/") -- old cache dir
 
 local function loadAsset(filename)
     local filepath = "cache/tripwire-voice/" .. filename

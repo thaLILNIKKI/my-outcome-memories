@@ -7,7 +7,7 @@ local function loadCustomAsset(url, filename)
     return getcustomasset(filename)
 end
 
-pcall(delfile, "tea-time-waltz.mp3") -- old cache dir
+delfile("tea-time-waltz.mp3") -- old cache dir
 
 local MUSIC_ID = loadCustomAsset(
     "https://github.com/thaLILNIKKI/my-outcome-memories/releases/download/resources/tea-time-waltz.mp3",
