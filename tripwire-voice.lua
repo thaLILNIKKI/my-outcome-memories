@@ -1,37 +1,37 @@
-print("[tripwire-voice] Script now loading... Made by lil2kki <3")
+print("[tripwire-voice] Now loading... Made by lil2kki <3")
 
 local SoundService = game:GetService("SoundService")
 
-local BASE_URL = "https://github.com/thaLILNIKKI/my-outcome-memories/releases/download/tripwire-voice/"
+pcall(delfolder, "tripwire-voice/") -- old cache dir
 
 local function loadAsset(filename)
-    local filepath = "tripwire-voice/" .. filename
+    local filepath = "cache/tripwire-voice/" .. filename
     if not isfile(filepath) then
-        makefolder("tripwire-voice")
-        print("[tripwire-voice] Downloading: " .. filename)
-        writefile(filepath, game:HttpGet(BASE_URL .. filename))
-        print("[tripwire-voice] Saved: " .. filepath)
+        makefolder("cache/tripwire-voice")
+        -- print("[tripwire-voice] Downloading: " .. filename)
+        writefile(filepath, game:HttpGet("https://github.com/thaLILNIKKI/my-outcome-memories/releases/download/resources/" .. filename))
+        -- print("[tripwire-voice] Saved: " .. filepath)
     else
-        print("[tripwire-voice] Already cached: " .. filename)
+        -- print("[tripwire-voice] Already cached: " .. filename)
     end
     local asset = getcustomasset(filepath)
-    print("[tripwire-voice] Loaded: " .. filename .. " -> " .. tostring(asset))
+    -- print("[tripwire-voice] Loaded: " .. filename .. " -> " .. tostring(asset))
     return asset
 end
 
-print("[tripwire-voice] Loading cry assets...")
+-- print("[tripwire-voice] Loading cry assets...")
 local cryAssets = {}
 for i = 1, 10 do
-    table.insert(cryAssets, loadAsset("cry" .. i .. ".mp3"))
+    table.insert(cryAssets, loadAsset("tw-cry" .. i .. ".mp3"))
 end
-print("[tripwire-voice] Cry assets ready: " .. #cryAssets)
+-- print("[tripwire-voice] Cry assets ready: " .. #cryAssets)
 
-print("[tripwire-voice] Loading downing assets...")
+-- print("[tripwire-voice] Loading downing assets...")
 local downingAssets = {}
 for i = 1, 22 do
-    table.insert(downingAssets, loadAsset("downing" .. i .. ".mp3"))
+    table.insert(downingAssets, loadAsset("tw-downing" .. i .. ".mp3"))
 end
-print("[tripwire-voice] Downing assets ready: " .. #downingAssets)
+-- print("[tripwire-voice] Downing assets ready: " .. #downingAssets)
 
 local sfxGroup = SoundService:FindFirstChild("TripwireSFX")
 if not sfxGroup then
@@ -39,9 +39,9 @@ if not sfxGroup then
     sfxGroup.Name = "TripwireSFX"
     sfxGroup.Volume = 1
     sfxGroup.Parent = SoundService
-    print("[tripwire-voice] Created SoundGroup: TripwireSFX")
+    -- print("[tripwire-voice] Created SoundGroup: TripwireSFX")
 else
-    print("[tripwire-voice] SoundGroup already exists: TripwireSFX")
+    -- print("[tripwire-voice] SoundGroup already exists: TripwireSFX")
 end
 
 local function isTripwire(model)
@@ -66,7 +66,7 @@ local function playRandom(assets, label)
     end
 
     local idx = math.random(1, #assets)
-    print("[tripwire-voice] Playing " .. label .. " #" .. idx .. " on " .. parent.Name)
+    -- print("[tripwire-voice] Playing " .. label .. " #" .. idx .. " on " .. parent.Name)
 
     local sound = Instance.new("Sound")
     sound.Volume = 1
@@ -83,14 +83,14 @@ local playersFolder = workspace:WaitForChild("Players")
 
 local function watchModel(model)
     if isTripwire(model) then
-        print("[tripwire-voice] Watching EXE: " .. model.Name)
+        -- print("[tripwire-voice] Watching EXE: " .. model.Name)
         local stunActive = false
         model.AttributeChanged:Connect(function(attr)
             if attr ~= "StunDur" then return end
             local val = model:GetAttribute("StunDur")
             if val and val > 0 and not stunActive then
                 stunActive = true
-                print("[tripwire-voice] Stunned! StunDur = " .. tostring(val))
+                -- print("[tripwire-voice] Stunned! StunDur = " .. tostring(val))
                 playRandom(cryAssets, "cry")
             elseif not val or val <= 0 then
                 if stunActive then print("[tripwire-voice] Stun ended") end
@@ -105,7 +105,7 @@ local function watchModel(model)
         if state ~= "downed" then return end
         for _, m in ipairs(playersFolder:GetChildren()) do
             if isTripwire(m) then
-                print("[tripwire-voice] " .. model.Name .. " downed by Tripwire!")
+                -- print("[tripwire-voice] " .. model.Name .. " downed by Tripwire!")
                 playRandom(downingAssets, "downing")
                 return
             end
@@ -118,8 +118,10 @@ for _, child in ipairs(playersFolder:GetChildren()) do
 end
 
 playersFolder.ChildAdded:Connect(function(child)
-    print("[tripwire-voice] New model joined: " .. child.Name .. " | Character: " .. tostring(child:GetAttribute("Character")))
+    -- print("[tripwire-voice] New model joined: " .. child.Name .. " | Character: " .. tostring(child:GetAttribute("Character")))
     watchModel(child)
 end)
 
-print("[tripwire-voice] Script ready!")
+print("[tripwire-voice] Ready! Made by lil2kki <3")
+print("[tripwire-voice] https://scriptblox.com/u/lil2kki")
+print("[tripwire-voice] https://github.com/thaLILNIKKI/my-outcome-memories")

@@ -1,4 +1,4 @@
-print("[tea-time-waltz] Now loading... Made by lil2kki <3")
+print("[tea-time-waltz-old] Now loading... Made by lil2kki <3")
 
 local function loadCustomAsset(url, filename)
     if not isfile(filename) then
@@ -7,11 +7,11 @@ local function loadCustomAsset(url, filename)
     return getcustomasset(filename)
 end
 
-pcall(delfile, "tea-time-waltz.mp3") -- old cache dir
+pcall(delfile, "cache/tea-time-waltz-old.mp3") -- old cache dir
 
 local MUSIC_ID = loadCustomAsset(
-    "https://github.com/thaLILNIKKI/my-outcome-memories/releases/download/resources/tea-time-waltz.mp3",
-    "cache/tea-time-waltz.mp3"
+    "https://github.com/thaLILNIKKI/my-outcome-memories/releases/download/resources/tea-time-waltz-old.mp3",
+    "cache/tea-time-waltz-old.mp3"
 )
 
 local RS = game:GetService("ReplicatedStorage")
@@ -39,25 +39,24 @@ local function applyReplacement()
                     creamSound.SoundId = MUSIC_ID
                 end
             end)
-            print("[tea-time-waltz] Replaced successfully")
+            print("[tea-time-waltz-old] Replaced successfully")
         end
     end)
     if not ok then
-        warn("[tea-time-waltz] Failed: " .. tostring(result))
+        warn("[tea-time-waltz-old] Failed: " .. tostring(result))
     end
 end
 
 applyReplacement()
 
 stateValue.Changed:Connect(function(newState)
-    -- print("[tea-time-waltz] State: " .. tostring(newState))
+    -- print("[tea-time-waltz-old] State: " .. tostring(newState))
     if newState == "RE" and creamSound and creamSound.IsPlaying then
         creamSound.Looped = false
-        creamSound.TimePosition = 184.5 -- 3:04:500
-        -- print("[tea-time-waltz] Seeked to 3:04.5 (end)")
+        creamSound.TimePosition = 220.9 -- 3:40
     end
 end)
 
-print("[tea-time-waltz] Ready! Made by lil2kki <3")
-print("[tea-time-waltz] https://scriptblox.com/u/lil2kki")
-print("[tea-time-waltz] https://github.com/thaLILNIKKI/my-outcome-memories")
+print("[tea-time-waltz-old] Script loaded! Made by lil2kki <3")
+print("[tea-time-waltz-old] https://scriptblox.com/u/lil2kki")
+print("[tea-time-waltz-old] https://github.com/thaLILNIKKI/my-outcome-memories")

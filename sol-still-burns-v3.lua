@@ -1,4 +1,4 @@
-print("[sol-still-burns-v3] Script now loading... Made by lil2kki <3")
+print("[sol-still-burns-v3] Now loading... Made by lil2kki <3")
 
 local function loadCustomAsset(url, filename)
     if not isfile(filename) then
@@ -7,9 +7,11 @@ local function loadCustomAsset(url, filename)
     return getcustomasset(filename)
 end
 
+pcall(delfile, "sol-still-burns-v3.mp3") -- old cache dir
+
 local MUSIC_ID = loadCustomAsset(
-    "https://fine.sunproxy.net/file/MDFlaFZ6bXBWTjJ3T3EvTmh6Yk1uVnhEbGJKbmxXSEJobXUvdTBBS1g1bHIyS1RRd2xIYUZXVmtIZHdpTmJtYmhhQU9BZjAwTE1DNm84WG45Mm9JTW54aTVzMGUrcnhQWENRN1hEQllxeVk9/Vasalto_-_The_Sol_Still_Burns_V3_April_Fools_(SkySound.cc).mp3",
-    "sol-still-burns-v3.mp3"
+    "https://github.com/thaLILNIKKI/my-outcome-memories/releases/download/resources/sol-still-burns-v3.mp3",
+    "cache/sol-still-burns-v3.mp3"
 )
 
 local RS = game:GetService("ReplicatedStorage")
@@ -56,4 +58,6 @@ stateValue.Changed:Connect(function(newState)
     end
 end)
 
-print("[sol-still-burns-v3] Script loaded! Made by lil2kki <3")
+print("[sol-still-burns-v3] Ready! Made by lil2kki <3")
+print("[sol-still-burns-v3] https://scriptblox.com/u/lil2kki")
+print("[sol-still-burns-v3] https://github.com/thaLILNIKKI/my-outcome-memories")
