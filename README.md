@@ -8,7 +8,7 @@ run them with any *executor* like **[xeno](https://discord.gg/xe-no)** you know.
 
 ```lua
 -- include all stuf from thaLILNIKKI/my-outcome-memories
-_g.OLDER_CREAM_LMS = false; -- change that if you want older version of TEA-TIME WALTZ
+_G.OLDER_CREAM_LMS = false; -- change that if you want older version of TEA-TIME WALTZ
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/--load-all.lua"))()
 ```
 
