@@ -9,5 +9,3 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcom
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/tripwire-voice.lua"))()
 -- Amy Rose Stun Voice Lines Fanmade.
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/amy-voice.lua"))()
--- Hit V to toggle. EXPEREMENTAL SHIT REALLY
-loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/first-person.lua"))()
