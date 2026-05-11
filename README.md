@@ -25,6 +25,13 @@ loadstring(game:HttpGet(     -- FOR BLAZE
     "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/sol-still-burns-v3.lua"
 ))()
 ```
+## Rebind to mouse buttons for Cream with gun
+```lua
+-- additional handling functionality for player input so you feel it like shooter
+loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/normal-cream-rebind.lua"
+))()
+```
 ## Restore Tripwire (TailsDoll) Voice Lines
 ```lua
 -- Bring back sounds that was removed due to Roblox moderation.
