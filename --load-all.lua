@@ -1,5 +1,5 @@
 -- TEA-TIME WALTZ FOR CREAM
-if _g.OLDER_CREAM_LMS then loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/tea-time-waltz-old.lua"))()
+if _G.OLDER_CREAM_LMS then loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/tea-time-waltz-old.lua"))()
 else loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/tea-time-waltz.lua"))() end
 -- Vasalto - The Sol Still Burns V3 (April Fools)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/sol-still-burns-v3.lua"))()
