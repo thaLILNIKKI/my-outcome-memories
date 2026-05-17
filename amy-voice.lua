@@ -14,13 +14,7 @@ local AMY_SOUNDS = {
     "rbxassetid://138002390180472",
 }
 
-local sfxGroup = SoundService:FindFirstChild("AmySFX")
-if not sfxGroup then
-    sfxGroup = Instance.new("SoundGroup")
-    sfxGroup.Name = "AmySFX"
-    sfxGroup.Volume = 1
-    sfxGroup.Parent = SoundService
-end
+local sfxGroup = game.ReplicatedStorage.ClientAssets.Sounds.sfx
 
 local function iAmAmy()
     local playersFolder = workspace:FindFirstChild("Players")
