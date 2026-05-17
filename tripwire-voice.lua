@@ -33,16 +33,7 @@ for i = 1, 22 do
 end
 -- print("[tripwire-voice] Downing assets ready: " .. #downingAssets)
 
-local sfxGroup = SoundService:FindFirstChild("TripwireSFX")
-if not sfxGroup then
-    sfxGroup = Instance.new("SoundGroup")
-    sfxGroup.Name = "TripwireSFX"
-    sfxGroup.Volume = 1
-    sfxGroup.Parent = SoundService
-    -- print("[tripwire-voice] Created SoundGroup: TripwireSFX")
-else
-    -- print("[tripwire-voice] SoundGroup already exists: TripwireSFX")
-end
+local sfxGroup = game.ReplicatedStorage.ClientAssets.Sounds.sfx
 
 local function isTripwire(model)
     return model:GetAttribute("Character") == "TailsDoll"
