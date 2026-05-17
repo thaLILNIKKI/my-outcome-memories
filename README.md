@@ -53,6 +53,11 @@ loadstring(game:HttpGet(
     "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/amy-voice.lua"
 ))()
 ```
+## Cream hurt voice lines from uneasy rest (94445064593939)
+```lua
+-- Cream hurt voice lines from uneasy rest (94445064593939)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/cream-screams.lua"))()
+```
 ## First Person Camera Mode
 ```lua
 -- Hit V to toggle. EXPEREMENTAL SHIT REALLY
