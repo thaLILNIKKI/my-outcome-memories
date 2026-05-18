@@ -1,7 +1,5 @@
 print("[cream-screams] Now loading... Made by lil2kki <3")
 
-local SoundService = game:GetService("SoundService")
-
 local function loadAsset(filename)
     local filepath = "cache/cream-screams/" .. filename
     if not isfile(filepath) then
@@ -18,20 +16,30 @@ end
 
 local sfxGroup = game.ReplicatedStorage.ClientAssets.Sounds.sfx
 
-local function playRandom(assets, model)
-    local parent = workspace
+local function getOrCreateSound(model)
     local hrp = model:FindFirstChild("HumanoidRootPart")
-    if hrp then parent = hrp end
-    
-    local sound = Instance.new("Sound")
-    sound.Volume = 1
+    if not hrp then return nil end
+
+    local sound = hrp:FindFirstChild("CreamScream")
+    if not sound then
+        sound = Instance.new("Sound")
+        sound.Name = "CreamScream"
+        sound.Volume = 1
+        sound.RollOffMaxDistance = 255
+        sound.RollOffMinDistance = 10
+        sound.SoundGroup = sfxGroup
+        sound.Parent = hrp
+    end
+
+    return sound
+end
+
+local function playRandom(assets, model)
+    local sound = getOrCreateSound(model)
+    if not sound or sound.IsPlaying then return end
+
     sound.SoundId = assets[math.random(1, #assets)]
-    sound.RollOffMaxDistance = 255
-    sound.RollOffMinDistance = 10
-    sound.SoundGroup = sfxGroup
-    sound.Parent = parent
     sound:Play()
-    game:GetService("Debris"):AddItem(sound, 10)
 end
 
 local playersFolder = workspace:WaitForChild("Players")
@@ -42,19 +50,18 @@ local lastBlood = 0
 local Remotes = game:GetService("ReplicatedStorage"):WaitForChild("Remotes")
 Remotes:WaitForChild("CharacterFX").OnClientEvent:Connect(function(action, target)
     local name = tostring(target)
-    
+
     if action == "blood" then
         lastBlood = tick()
         return
     end
-    
+
     if action == "alertsurvivors" then
-        local t = lastBlood
-        if (tick() - t) > BLOOD_WINDOW then return end
-        
+        if (tick() - lastBlood) > BLOOD_WINDOW then return end
+
         local model = playersFolder:FindFirstChild(name)
         if not model or not string.find(model:GetAttribute("Character") or "", "Cream") then return end
-        
+
         playRandom(screamAssets, model)
     end
 end)
@@ -62,7 +69,6 @@ end)
 print("[cream-screams] Ready! Made by lil2kki <3")
 print("[cream-screams] Sounds from uneasy rest (94445064593939)")
 print("[cream-screams] https://github.com/thaLILNIKKI/my-outcome-memories")
-
 
 --[[ uneasy rest place 94445064593939
 (private sounds)
