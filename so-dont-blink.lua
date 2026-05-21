@@ -48,11 +48,9 @@ end
 applyReplacement()
 
 stateValue.Changed:Connect(function(newState)
-    -- print("[so-dont-blink] State: " .. tostring(newState))
     if newState == "RE" and sonicSound and sonicSound.IsPlaying then
         sonicSound.Looped = false
-        -- sonicSound.TimePosition = 184.5 -- 3:04:500
-        -- print("[so-dont-blink] Seeked to 3:04.5 (end)")
+        sonicSound.TimePosition = 289 -- 4:49
     end
 end)
 
