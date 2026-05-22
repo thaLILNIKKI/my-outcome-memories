@@ -31,6 +31,12 @@ loadstring(game:HttpGet(     -- FOR BLAZE
     "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/sol-still-burns-v3.lua"
 ))()
 ```
+```lua
+-- juno, ThatGuyNamedPanther, Astranova, feat. Johnny Gioeli - So, DON T BLINK
+loadstring(game:HttpGet(     -- FOR SONIC
+    "https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/so-dont-blink.lua"
+))()
+```
 ## Rebind to mouse buttons for Cream with gun
 ```lua
 -- additional handling functionality for player input so you feel it like shooter
