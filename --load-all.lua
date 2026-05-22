@@ -11,3 +11,5 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcom
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/amy-voice.lua"))()
 -- Cream hurt voice lines from uneasy rest (94445064593939)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/cream-screams.lua"))()
+-- juno, ThatGuyNamedPanther, Astranova, feat. Johnny Gioeli - So, DON T BLINK -- FOR SONIC
+loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/so-dont-blink.lua"))()
