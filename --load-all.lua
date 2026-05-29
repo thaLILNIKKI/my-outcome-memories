@@ -4,7 +4,7 @@ else loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-o
 -- Vasalto - The Sol Still Burns V3 (April Fools)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/sol-still-burns-v3.lua"))()
 -- additional handling functionality for player input so you feel it like shooter
-loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/normal-cream-rebind.lua"))()
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/normal-cream-rebind.lua"))()
 -- Bring back sounds that was removed due to Roblox moderation.
 loadstring(game:HttpGet("https://raw.githubusercontent.com/thaLILNIKKI/my-outcome-memories/HEAD/tripwire-voice.lua"))()
 -- Amy Rose Stun Voice Lines Fanmade.
