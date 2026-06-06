@@ -1,5 +1,7 @@
 print("[tripwire-voice] Now loading... Made by lil2kki <3")
 
+_G.TailsDollVoicelinesLoading = true
+
 delfolder("tripwire-voice/") -- old cache dir
 
 local function loadAsset(filename)
