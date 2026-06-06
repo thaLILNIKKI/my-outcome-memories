@@ -12,15 +12,11 @@ local function loadAsset(filename)
     return asset
 end
 
-local cryAssets = {}
-for i = 1, 10 do
-    table.insert(cryAssets, loadAsset("tw-cry" .. i .. ".mp3"))
-end
+_G.TailsDollVoicelinesCryAssets = {}
+for i = 1, 10 do table.insert(_G.TailsDollVoicelinesCryAssets, loadAsset("tw-cry" .. i .. ".mp3")) end
 
-local downingAssets = {}
-for i = 1, 22 do
-    table.insert(downingAssets, loadAsset("tw-downing" .. i .. ".mp3"))
-end
+_G.TailsDollVoicelinesDowningAssets = {}
+for i = 1, 22 do table.insert(_G.TailsDollVoicelinesDowningAssets, loadAsset("tw-downing" .. i .. ".mp3")) end
 
 -- _G.TailsDollVoicelinesPlayerModel
 
@@ -51,7 +47,7 @@ local function watchEXE(model)
         local val = model:GetAttribute("StunDur")
         if val and val > 0 and not _G.TailsDollVoicelinesStunActive then
             _G.TailsDollVoicelinesStunActive = true
-            playRandom(cryAssets, "cry")
+            playRandom(_G.TailsDollVoicelinesCryAssets, "cry")
         elseif not val or val <= 0 then
             _G.TailsDollVoicelinesStunActive = false
         end
@@ -63,7 +59,7 @@ local function watchSrv(model)
         if attr ~= "State" then return end
         local state = model:GetAttribute("State")
         if _G.TailsDollVoicelinesPlayerModel then
-            if state == "downed" then playRandom(downingAssets, "downing") end
+            if state == "downed" then playRandom(_G.TailsDollVoicelinesDowningAssets, "downing") end
         else
             conn:Disconnect()
 	        conn = nil
