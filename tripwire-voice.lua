@@ -1,4 +1,6 @@
-print("[tripwire-voice] Now loading... Made by lil2kki <3")
+print("[tripwire-voice] TRIPWIRE VOICELINES FIXED :D")
+print("[tripwire-voice] im out.")
+return
 
 _G.TailsDollVoicelinesLoading = true
 
