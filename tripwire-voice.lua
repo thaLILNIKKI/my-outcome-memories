@@ -1,6 +1,6 @@
 print("[tripwire-voice] TRIPWIRE VOICELINES FIXED :D")
 print("[tripwire-voice] im out.")
-return
+if not game then
 
 _G.TailsDollVoicelinesLoading = true
 
@@ -98,3 +98,5 @@ end)
 
 print("[tripwire-voice] Ready! Made by lil2kki <3")
 print("[tripwire-voice] https://github.com/thaLILNIKKI/my-outcome-memories")
+
+end
