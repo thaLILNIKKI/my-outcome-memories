@@ -1,9 +1,7 @@
 print("[tea-time-waltz] Now loading... Made by lil2kki <3")
 
 local function loadCustomAsset(url, filename)
-    if not isfile(filename) then
-        writefile(filename, game:HttpGet(url))
-    end
+    if not isfile(filename) then writefile(filename, game:HttpGet(url)) end
     return getcustomasset(filename)
 end
 
@@ -14,50 +12,25 @@ local MUSIC_ID = loadCustomAsset(
     "cache/tea-time-waltz.mp3"
 )
 
-local RS = game:GetService("ReplicatedStorage")
-local GameProperties = workspace:WaitForChild("GameProperties")
-local stateValue = GameProperties:WaitForChild("State")
+local CreamSolo = game:GetService("ReplicatedStorage"):FindFirstChild("CreamSolo", true)
 
-local creamSound = nil
-
-local function applyReplacement()
-    local ok, result = pcall(function()
-        local soloTheme = RS
-            :WaitForChild("ClientAssets", 10)
-            :WaitForChild("Sounds", 10)
-            :WaitForChild("mus", 10)
-            :WaitForChild("Game", 10)
-            :WaitForChild("Round", 10)
-            :WaitForChild("SoloTheme", 10)
-
-        creamSound = soloTheme:WaitForChild("CreamSolo", 10)
-        if creamSound and creamSound:IsA("Sound") then
-            creamSound.SoundId = MUSIC_ID
-            creamSound.Looped = true
-            creamSound:GetPropertyChangedSignal("SoundId"):Connect(function()
-                if creamSound.SoundId ~= MUSIC_ID then
-                    creamSound.SoundId = MUSIC_ID
-                end
-            end)
-            print("[tea-time-waltz] Replaced successfully")
-        end
-    end)
-    if not ok then
-        warn("[tea-time-waltz] Failed: " .. tostring(result))
-    end
+if CreamSolo and CreamSolo:IsA("Sound") then
+    CreamSolo.SoundId = MUSIC_ID
+    CreamSolo.Looped = true
 end
 
-applyReplacement()
-
-stateValue.Changed:Connect(function(newState)
-    -- print("[tea-time-waltz] State: " .. tostring(newState))
-    if newState == "RE" and creamSound and creamSound.IsPlaying then
-        creamSound.Looped = false
-        creamSound.TimePosition = 184.5 -- 3:04:500
-        -- print("[tea-time-waltz] Seeked to 3:04.5 (end)")
+_G.CreamSoloGameStateConn = _G.CreamSoloGameStateConn or nil
+if _G.CreamSoloGameStateConn then
+	_G.CreamSoloGameStateConn:Disconnect()
+	_G.CreamSoloGameStateConn = nil
+	print("[tea-time-waltz] Previous game state connection destroyed")
+end
+_G.CreamSoloGameStateConn = workspace:WaitForChild("GameProperties"):WaitForChild("State").Changed:Connect(function(newState)
+    if newState == "RE" and CreamSolo and CreamSolo:IsA("Sound") and CreamSolo.IsPlaying then
+        CreamSolo.Looped = false
+        CreamSolo.TimePosition = 184.5 -- 3:04:500
     end
 end)
 
-print("[tea-time-waltz] Ready! Made by lil2kki <3")
-print("[tea-time-waltz] https://scriptblox.com/u/lil2kki")
+print("[tea-time-waltz] Ready!")
 print("[tea-time-waltz] https://github.com/thaLILNIKKI/my-outcome-memories")
